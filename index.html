@@ -1,0 +1,909 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Haikal Akbar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .pitch-pattern {
+            background-color: #ffffff;
+            background-image:  radial-gradient(#fee2e2 1px, transparent 1px), radial-gradient(#fee2e2 1px, #ffffff 1px);
+            background-size: 40px 40px;
+            background-position: 0 0,20px 20px;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo / Badge -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <span class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center text-lg shadow-md group-hover:bg-brand-700 transition">
+                        HA
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-slate-900 tracking-tight text-base leading-tight group-hover:text-brand-600 transition">Haikal Akbar</span>
+                        <span class="text-xs text-slate-500 font-medium">Siap Bekerja & Adaptif</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                    <a href="#tentang" class="hover:text-brand-600 transition">Tentang Saya</a>
+                    <a href="#pengalaman" class="hover:text-brand-600 transition">Pengalaman</a>
+                    <a href="#pendidikan" class="hover:text-brand-600 transition">Pendidikan</a>
+                    <a href="#keahlian" class="hover:text-brand-600 transition">Keahlian</a>
+                    <a href="#hobi" class="hover:text-brand-600 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-futbol text-brand-600"></i>
+                        <i class="fa-solid fa-music text-brand-600"></i>
+                        <span>Minat</span>
+                    </a>
+                </div>
+
+                <!-- Contact CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#kontak" class="px-4 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition-all duration-200 flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Hubungi Saya</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="#tentang" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Tentang Saya</a>
+            <a href="#pengalaman" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Pengalaman</a>
+            <a href="#pendidikan" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Pendidikan</a>
+            <a href="#keahlian" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Keahlian</a>
+            <a href="#hobi" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Minat & Hobi</a>
+            <a href="#kontak" class="block py-2 text-center text-white bg-brand-600 rounded-lg font-semibold">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-16 md:pt-36 md:pb-24 pitch-pattern border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Intro Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
+                        Siap Bekerja di Berbagai Posisi
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Halo, Saya <span class="text-brand-600 underline decoration-brand-200 decoration-wavy">Haikal Akbar</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed">
+                        Lulusan MA berdedikasi, cekatan, dan berorientasi pada hasil. Memiliki etos kerja tinggi, ketahanan fisik, serta kemampuan beradaptasi yang cepat untuk siap berkontribusi secara optimal di berbagai bidang pekerjaan dan perusahaan.
+                    </p>
+
+                    <!-- Fast Info Badges -->
+                    <div class="flex flex-wrap gap-4 pt-2 text-sm text-slate-600">
+                        <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-lg border border-slate-200 shadow-sm">
+                            <i class="fa-solid fa-location-dot text-brand-600"></i>
+                            <span>Cianjur, Jawa Barat</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-lg border border-slate-200 shadow-sm">
+                            <i class="fa-solid fa-envelope text-brand-600"></i>
+                            <a href="mailto:haikalakb666@gmail.com" class="hover:text-brand-600 transition">haikalakb666@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-lg border border-slate-200 shadow-sm">
+                            <i class="fa-solid fa-phone text-brand-600"></i>
+                            <span>081957233381</span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="https://wa.me/6281957233381" target="_blank" class="px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold shadow-md shadow-brand-500/20 transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Hubungi via WhatsApp</span>
+                        </a>
+                        <button onclick="downloadResumeModal()" class="px-6 py-3.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 rounded-xl font-semibold shadow-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf text-brand-600 text-lg"></i>
+                            <span>Lihat Ringkasan CV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Player-Style Card & Audio Widget -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <!-- Football Player Card Visual -->
+                    <div class="relative w-full max-w-sm bg-white rounded-2xl p-6 border-2 border-slate-200 shadow-xl transition-transform hover:scale-[1.01]">
+                        <!-- Top Accent Badge -->
+                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl uppercase tracking-widest flex items-center gap-1.5">
+                            <i class="fa-solid fa-star"></i>
+                            <span>Versatile Talent</span>
+                        </div>
+
+                        <!-- Player Photo Frame -->
+                        <div class="relative mt-2 mb-4 mx-auto w-36 h-36 rounded-full p-1 bg-gradient-to-tr from-brand-600 via-red-400 to-amber-300 shadow-md">
+                            <img src="https://cdn.phototourl.com/member/2026-10-04-dfd32ae7-d783-4b0a-ae54-4ee1114d3d4a.jpg" alt="Haikal Akbar Profile" class="w-full h-full object-cover rounded-full border-2 border-white" onerror="this.src='https://placehold.co/200x200/dc2626/white?text=HA'">
+                            <div class="absolute bottom-1 right-1 bg-white text-brand-600 p-1.5 rounded-full shadow border border-slate-100">
+                                <i class="fa-solid fa-futbol text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Player Info -->
+                        <div class="text-center">
+                            <h3 class="text-2xl font-extrabold text-slate-900">HAIKAL AKBAR</h3>
+                            <p class="text-xs font-bold text-brand-600 tracking-wider uppercase mt-0.5">Siap Bekerja & Beradaptasi</p>
+                        </div>
+
+                        <!-- Stats Grid (Football Scorecard Vibe) -->
+                        <div class="grid grid-cols-3 gap-2 my-5 text-center bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <div>
+                                <span class="block text-xs text-slate-500 font-medium">Etos Kerja</span>
+                                <span class="text-lg font-bold text-slate-900">100%</span>
+                            </div>
+                            <div class="border-x border-slate-200">
+                                <span class="block text-xs text-slate-500 font-medium">Adaptasi</span>
+                                <span class="text-lg font-bold text-brand-600">Cepat</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-500 font-medium">Kedisiplinan</span>
+                                <span class="text-lg font-bold text-slate-900">Tinggi</span>
+                            </div>
+                        </div>
+
+                        <!-- Music Player Mini Bar (Hobby Integration) -->
+                        <div class="bg-slate-900 text-white rounded-xl p-3 flex items-center justify-between gap-3 shadow-inner">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center text-white shrink-0 animate-pulse-slow">
+                                    <i class="fa-solid fa-compact-disc text-lg"></i>
+                                </div>
+                                <div class="truncate">
+                                    <p class="text-xs font-semibold truncate text-slate-100" id="now-playing-title">Matchday Focus Beats</p>
+                                    <p class="text-[10px] text-slate-400">Hobi & Ritme Kerja</p>
+                                </div>
+                            </div>
+                            <button id="bg-music-toggle" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-600 text-white flex items-center justify-center transition shrink-0">
+                                <i class="fa-solid fa-play text-xs" id="music-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Performance Metrics Section -->
+    <section class="py-10 bg-brand-600 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                    <div class="text-3xl font-extrabold mb-1">100%</div>
+                    <div class="text-xs md:text-sm font-medium text-brand-100">Komitmen & Tanggung Jawab</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                    <div class="text-3xl font-extrabold mb-1">Adaptif</div>
+                    <div class="text-xs md:text-sm font-medium text-brand-100">Siap Belajar Hal & Peran Baru</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                    <div class="text-3xl font-extrabold mb-1">Teruji</div>
+                    <div class="text-xs md:text-sm font-medium text-brand-100">Pengalaman Kerja Nyata</div>
+                </div>
+                <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                    <div class="text-3xl font-extrabold mb-1">Disiplin SOP</div>
+                    <div class="text-xs md:text-sm font-medium text-brand-100">Ketelitian & Kepatuhan Prosedur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">PROFIL SINGKAT</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Ringkasan Profesional</h3>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-slate-200/50 text-9xl font-extrabold select-none pointer-events-none">
+                    HA
+                </div>
+                <div class="relative z-10 space-y-4 text-slate-700 leading-relaxed text-base sm:text-lg">
+                    <p>
+                        Saya adalah lulusan MA yang berdedikasi tinggi, disiplin, dan mudah beradaptasi dengan lingkungan kerja baru. Memiliki pengalaman kerja nyata yang membentuk karakter pekerja keras, teliti, serta berorientasi pada pencapaian target.
+                    </p>
+                    <p>
+                        Saya terbuka dan siap untuk ditempatkan pada berbagai bidang pekerjaan—baik di industri pelayanan pelanggan, staf administrasi, operasional, logistik, maupun posisi umum lainnya. Saya berkomitmen penuh untuk belajar dengan cepat, mematuhi seluruh standar operasional perusahaan, serta memberikan kontribusi terbaik.
+                    </p>
+                </div>
+
+                <!-- Highlight Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-arrows-spin"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Cepat Belajar & Adaptif</h4>
+                            <p class="text-xs text-slate-500">Mampu menguasai alur kerja & tugas baru dengan sigap.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Disiplin Prosedur / SOP</h4>
+                            <p class="text-xs text-slate-500">Patuh pada arahan kerja, teliti, dan mengutamakan kualitas.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Kerja Sama & Komunikasi</h4>
+                            <p class="text-xs text-slate-500">Pelayanan ramah, sopan, dan siap berkolaborasi dalam tim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="pengalaman" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">REKAM JEJAK</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Pengalaman Kerja</h3>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-2 border-brand-200 ml-4 sm:ml-8 space-y-12">
+                
+                <!-- Experience Item 2 (Saung King - Most Recent) -->
+                <div class="relative pl-6 sm:pl-10 group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full bg-white border-4 border-brand-600 group-hover:scale-125 transition-transform"></div>
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-md bg-brand-50 text-brand-700 text-xs font-bold mb-1">F&B & Kuliner</span>
+                                <h4 class="text-xl font-extrabold text-slate-900">Pengelola Operasional</h4>
+                                <h5 class="text-base font-semibold text-brand-600">Saung King</h5>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+                                <i class="fa-regular fa-calendar-alt text-brand-600"></i>
+                                <span>10/2023 - 12/2024</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Bertanggung jawab penuh dalam manajemen dan bisnis toko/warung milik keluarga dengan omset mencapai kurang lebih <strong>Rp 20.000.000 setiap bulan</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Melayani lebih dari 15 pelanggan secara ramah dan efisien setiap harinya.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Menentukan keputusan dengan cepat dan tepat dalam keadaan darurat serta berhasil menghadapi tantangan operasional tanpa mengurangi kualitas makanan.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Memastikan pencapaian target keuntungan dengan memantau dan menganalisis laporan keuangan, mengidentifikasi peluang penghematan biaya, dan menjaga kepatuhan anggaran.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 1 (PT Sumber Alfaria Trijaya Tbk) -->
+                <div class="relative pl-6 sm:pl-10 group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full bg-white border-4 border-brand-600 group-hover:scale-125 transition-transform"></div>
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-md bg-brand-50 text-brand-700 text-xs font-bold mb-1">Ritel Modern</span>
+                                <h4 class="text-xl font-extrabold text-slate-900">Crew Store</h4>
+                                <h5 class="text-base font-semibold text-brand-600">PT Sumber Alfaria Trijaya Tbk (Alfamart)</h5>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+                                <i class="fa-regular fa-calendar-alt text-brand-600"></i>
+                                <span>02/2023 - 09/2023</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Menyambut pelanggan, memberikan informasi produk, dan memproses transaksi tunai/non-tunai dengan akurasi 100% menggunakan sistem POS (Point Of Sales) pada komputer.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Melakukan display produk sesuai planogram dan prinsip <strong>FEFO (First Expired First Out)</strong> secara berkala untuk meminimalisir barang expired.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Bertanggung jawab atas stock opname harian dan pengecekan ketat barang rawan hilang.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Mengelola kebersihan dan kerapian area kerja (rak, lantai toko, dan gudang).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-1 shrink-0"></i>
+                                <span>Menerima barang kiriman dan membongkar muatan kurang lebih <strong>30 container barang dari Distribution Center (DC)</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="pendidikan" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">LATAR BELAKANG</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Pendidikan</h3>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center font-bold text-xl shadow-md shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-extrabold text-slate-900">MAN 2 CIANJUR</h4>
+                            <p class="text-slate-600 font-semibold">Ilmu Pengetahuan Sosial (IPS)</p>
+                        </div>
+                    </div>
+                    <div class="text-left sm:text-right">
+                        <span class="inline-block px-3 py-1 bg-brand-100 text-brand-800 rounded-lg text-xs font-bold">2019 - 2022</span>
+                        <p class="text-sm font-extrabold text-slate-800 mt-1">Nilai Akhir: <span class="text-brand-600 text-base">84</span></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Mata Pelajaran Relevan</h5>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                            <span class="block font-bold text-slate-800 text-sm">Ekonomi</span>
+                            <span class="text-xs text-slate-500">Manajemen Distribusi & Akuntansi</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                            <span class="block font-bold text-slate-800 text-sm">Sosiologi</span>
+                            <span class="text-xs text-slate-500">Komunikasi & Kerja Sama Tim</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                            <span class="block font-bold text-slate-800 text-sm">Geografi</span>
+                            <span class="text-xs text-slate-500">Pemetaan Logistik & Wilayah</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="keahlian" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">POTENSI & KOMPETENSI</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Keahlian Utama</h3>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Hard Skills Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900">Hard Skills</h4>
+                            <p class="text-xs text-slate-500">Keahlian teknis & operasional</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800"><i class="fa-solid fa-boxes-stacked text-brand-600 mr-2"></i>Manajemen Stok</span>
+                                <span class="text-brand-600">Tingkat Tinggi</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-brand-600 h-2.5 rounded-full w-[95%]"></div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Stock opname, FEFO, pengawasan barang hilang.</p>
+                        </div>
+
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800"><i class="fa-solid fa-cash-register text-brand-600 mr-2"></i>Point Of Sales (POS)</span>
+                                <span class="text-brand-600">100% Akurat</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-brand-600 h-2.5 rounded-full w-[100%]"></div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Transaksi tunai & non-tunai berbasis komputer.</p>
+                        </div>
+
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800"><i class="fa-solid fa-file-signature text-brand-600 mr-2"></i>Administrasi Toko</span>
+                                <span class="text-brand-600">Tepat & Rapi</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-brand-600 h-2.5 rounded-full w-[90%]"></div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Pencatatan keuangan, pencapaian target & laporan omset.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900">Soft Skills</h4>
+                            <p class="text-xs text-slate-500">Karakter & etos kerja unggul</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-500 transition">
+                            <i class="fa-solid fa-hand-holding-heart text-2xl text-brand-600 mb-2"></i>
+                            <h5 class="font-bold text-slate-900 text-sm">Service Excellence</h5>
+                            <p class="text-xs text-slate-500 mt-1">Ramah & cepat dalam melayani pelanggan.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-500 transition">
+                            <i class="fa-solid fa-stopwatch text-2xl text-brand-600 mb-2"></i>
+                            <h5 class="font-bold text-slate-900 text-sm">Efisiensi Kerja</h5>
+                            <p class="text-xs text-slate-500 mt-1">Penyelesaian tugas tepat waktu & cekatan.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-500 transition">
+                            <i class="fa-solid fa-people-group text-2xl text-brand-600 mb-2"></i>
+                            <h5 class="font-bold text-slate-900 text-sm">Kerja Tim</h5>
+                            <p class="text-xs text-slate-500 mt-1">Komunikasi aktif & kolaboratif.</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-500 transition">
+                            <i class="fa-solid fa-diagram-project text-2xl text-brand-600 mb-2"></i>
+                            <h5 class="font-bold text-slate-900 text-sm">Sistematik</h5>
+                            <p class="text-xs text-slate-500 mt-1">Disiplin alur kerja & patuh SOP.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Minat & Hobi (Musik & Sepak Bola) Section -->
+    <section id="hobi" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">SISI LAIN DIRI SAYA</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Minat & Hobi</h3>
+                <p class="text-slate-600 text-sm mt-2">Prinsip kerja saya banyak terinspirasi dari harmoni musik dan ketahanan fisik sepak bola.</p>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Sepak Bola Feature Card -->
+                <div class="relative overflow-hidden bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-800">
+                    <div class="absolute -right-6 -bottom-6 text-slate-800 opacity-30 text-9xl">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase mb-4">
+                            <i class="fa-solid fa-trophy"></i>
+                            <span>Sepak Bola & Olahraga</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3">Ketahanan, Kerjasama & Strategi</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Sepak bola melatih stamina, ketahanan fisik, serta fokus konstan saat berada di bawah tekanan. Jiwa sportif dan kerjasama tim dalam pertandingan saya terapkan secara nyata di lingkungan kerja operasional ritel.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                <span class="font-bold text-brand-400 block mb-0.5">Kerja Sama Tim</span>
+                                <span class="text-slate-300">Saling mendukung untuk capai target store.</span>
+                            </div>
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                <span class="font-bold text-brand-400 block mb-0.5">Ketahanan Fisik</span>
+                                <span class="text-slate-300">Terbiasa angkat barang & bongkar muatan DC.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Musik Interactive Audio Player Card -->
+                <div class="bg-gradient-to-br from-slate-50 to-red-50/30 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-bold uppercase mb-4">
+                            <i class="fa-solid fa-headphones"></i>
+                            <span>Musik & Ritme</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-3">Ritme Kerja & Fokus Tinggi</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Musik memberikan ketenangan dan ritme konsisten saat bekerja. Ritme musik mengajarkan saya pentingnya keteraturan, ketelitian, serta harmoni dalam menyelesaikan alur kerja yang padat.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Synthesizer Audio Player -->
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold animate-spin-slow">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-slate-900" id="audio-status-label">Simulasi Sound Wave</span>
+                                    <span class="text-[10px] text-slate-500">Klik tombol untuk memutar nada fokus</span>
+                                </div>
+                            </div>
+                            <button id="interactive-synth-btn" onclick="playSynthSound()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Mainkan Sound</span>
+                            </button>
+                        </div>
+                        <!-- Soundwave bars visualizer -->
+                        <div class="flex items-end justify-between h-8 px-2 gap-1" id="soundwave-container">
+                            <div class="w-1.5 bg-slate-300 h-2 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-brand-500 h-4 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-slate-300 h-3 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-brand-600 h-6 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-slate-300 h-2 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-brand-500 h-5 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-slate-300 h-3 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-brand-600 h-7 rounded-full transition-all duration-200"></div>
+                            <div class="w-1.5 bg-slate-300 h-2 rounded-full transition-all duration-200"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-400 uppercase tracking-widest mb-2">KONEKSI & HUBUNGI</h2>
+                <h3 class="text-3xl font-bold text-white">Siap Untuk Bergabung</h3>
+                <p class="text-slate-400 text-sm mt-2">Silakan hubungi atau terhubung dengan saya melalui kontak dan media sosial di bawah ini.</p>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Email Card -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center hover:border-brand-500 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">Email</h4>
+                        <p class="text-slate-400 text-xs mb-4">Kirimkan penawaran kerja</p>
+                    </div>
+                    <button onclick="copyToClipboard('haikalakb666@gmail.com', 'Email')" class="w-full py-2 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 truncate px-2">
+                        <i class="fa-solid fa-copy"></i>
+                        <span class="truncate">haikalakb666@gmail.com</span>
+                    </button>
+                </div>
+
+                <!-- Phone / WhatsApp Card -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center hover:border-brand-500 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">WhatsApp / HP</h4>
+                        <p class="text-slate-400 text-xs mb-4">Respon cepat via WA/Telepon</p>
+                    </div>
+                    <a href="https://wa.me/6281957233381" target="_blank" class="block w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">
+                        081957233381
+                    </a>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center hover:border-brand-500 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-sky-600 text-white flex items-center justify-center mx-auto mb-4 text-xl shadow-md">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">LinkedIn</h4>
+                        <p class="text-slate-400 text-xs mb-4">Jaringan profesional & CV</p>
+                    </div>
+                    <a href="https://www.linkedin.com/in/haikal-akbar-b92a55224?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="block w-full py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        <span>Profil LinkedIn</span>
+                    </a>
+                </div>
+
+                <!-- Instagram Card -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center hover:border-brand-500 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center mx-auto mb-4 text-xl shadow-md">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-1">Instagram</h4>
+                        <p class="text-slate-400 text-xs mb-4">Aktivitas & Media Sosial</p>
+                    </div>
+                    <a href="https://www.instagram.com/_haikalakb?stkn=MWpiN3VmYmdla3ZpeQ==" target="_blank" class="block w-full py-2 bg-gradient-to-r from-rose-600 to-purple-600 hover:from-rose-700 hover:to-purple-700 text-white text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        <span>Kunjungi Instagram</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-8 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Haikal Akbar. Seluruh hak cipta dilindungi.</p>
+            <p class="mt-1 text-slate-600">Portofolio Profesional • Merah & Putih Elegan</p>
+        </div>
+    </footer>
+
+    <!-- CV Preview Modal -->
+    <div id="cv-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl border border-slate-200">
+            <button onclick="closeResumeModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="border-b border-slate-200 pb-4 mb-6">
+                <h3 class="text-2xl font-extrabold text-slate-900">RINGKASAN CURRICULUM VITAE</h3>
+                <p class="text-xs text-brand-600 font-bold uppercase">Haikal Akbar • Cianjur, Jawa Barat</p>
+            </div>
+
+            <div class="space-y-6 text-slate-700 text-sm">
+                <div>
+                    <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-1 mb-2">RINGKASAN PROFESIONAL</h4>
+                    <p>Lulusan MA yang berdedikasi dengan pengalaman kerja di bidang ritel dan manajemen operasional F&B. Memiliki pengalaman dalam pengelolaan operasional harian dan manajemen stok produk. Terbiasa mematuhi SOP secara ketat, menjaga kebersihan area kerja, serta memiliki ketahanan fisik dan fokus yang baik untuk mendukung kelancaran proses produksi.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-1 mb-2">PENDIDIKAN</h4>
+                    <p class="font-semibold text-slate-900">MAN 2 CIANJUR (2019 - 2022)</p>
+                    <p class="text-xs text-slate-500">Ilmu Pengetahuan Sosial • Nilai Akhir 84</p>
+                    <p class="text-xs text-slate-600 mt-1">Mata Pelajaran Relevan: Ekonomi (Manajemen Distribusi & Akuntansi), Sosiologi (Komunikasi & Kerja Sama Tim), dan Geografi.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-1 mb-2">PENGALAMAN KERJA</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold text-slate-900">Saung King - Pengelola Operasional <span class="text-xs font-normal text-slate-500">(10/2023 - 12/2024)</span></p>
+                            <p class="text-xs text-slate-600">• Omset ~Rp 20.000.000/bulan • Melayani >15 pelanggan/hari • Keputusan cepat & analisis keuangan.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900">PT Sumber Alfaria Trijaya Tbk - Crew Store <span class="text-xs font-normal text-slate-500">(02/2023 - 09/2023)</span></p>
+                            <p class="text-xs text-slate-600">• POS Transaksi 100% Akurat • Display FEFO & Stock Opname • Unload ~30 container barang DC.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-1 mb-2">KEAHLIAN</h4>
+                    <p class="text-xs"><strong>Hard Skill:</strong> Manajemen Stok, Point Of Sales, Administrasi</p>
+                    <p class="text-xs"><strong>Soft Skill:</strong> Service Excellence, Efisiensi Kerja, Kerja Tim, Sistematik</p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-200 flex justify-end gap-3">
+                <button onclick="window.print()" class="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-print mr-1.5"></i> Cetak / Simpan PDF
+                </button>
+                <button onclick="closeResumeModal()" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg hover:bg-slate-200 transition">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 text-sm font-semibold hidden z-50 items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- Client-side Logic Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function downloadResumeModal() {
+            document.getElementById('cv-modal').classList.remove('hidden');
+        }
+
+        function closeResumeModal() {
+            document.getElementById('cv-modal').classList.add('hidden');
+        }
+
+        function copyToClipboard(text, label) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`${label} (${text}) telah disalin!`);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        let audioCtx = null;
+        let isPlayingSynth = false;
+
+        function playSynthSound() {
+            const btn = document.getElementById('interactive-synth-btn');
+            const statusLabel = document.getElementById('audio-status-label');
+            const bars = document.querySelectorAll('#soundwave-container div');
+
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Play melodic tone sequence (C Major triad arpeggio)
+            const notes = [261.63, 329.63, 392.00, 523.25];
+            notes.forEach((freq, index) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.15);
+
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime + index * 0.15);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + index * 0.15 + 0.4);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(audioCtx.currentTime + index * 0.15);
+                osc.stop(audioCtx.currentTime + index * 0.15 + 0.4);
+            });
+
+            // Animate soundwave bars
+            bars.forEach((bar, idx) => {
+                const randomHeight = Math.floor(Math.random() * 20) + 8;
+                bar.style.height = `${randomHeight}px`;
+            });
+
+            statusLabel.innerText = 'Nada Fokus Dimainkan!';
+            setTimeout(() => {
+                statusLabel.innerText = 'Simulasi Sound Wave';
+            }, 1200);
+        }
+
+        // Mini Music Toggle Player Demo
+        const bgMusicBtn = document.getElementById('bg-music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlayingBeat = false;
+
+        bgMusicBtn.addEventListener('click', () => {
+            isPlayingBeat = !isPlayingBeat;
+            if (isPlayingBeat) {
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+                playSynthSound();
+                showToast("Memutar Musik Ritme Fokus!");
+            } else {
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+                showToast("Musik Dihentikan");
+            }
+        });
+    </script>
+</body>
+</html>
+``` 
